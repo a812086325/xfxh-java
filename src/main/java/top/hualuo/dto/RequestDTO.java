@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * 请求参数
+ * @author hualuo
+ */
 @NoArgsConstructor
 @Data
 public class RequestDTO {
