@@ -20,9 +20,9 @@
 xfxh:
   apiHost: spark-api.xf-yun.com
   apiPath: /v1.1/chat
-  appId: 1222e4ac
-  apiKey: 7682a3c820f4c200292d5a7a432d8f35
-  apiSecret: MzE1MTFjOWIzYzExYjM0YzExNGNjZDc1
+  appId: xxx
+  apiKey: xxx
+  apiSecret: xxx
 ```
 
 4、在启动类或配置类注册一个bean
