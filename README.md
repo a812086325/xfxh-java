@@ -3,19 +3,17 @@
 支持Tokens计算。
 
 # 使用方式
-1、下载本项目，将本项目install到本地maven仓库
-
-2、自己项目引入该依赖
+1、引入该依赖
 
 ```java
 <dependency>
-    <groupId>top.hualuo</groupId>
+    <groupId>io.github.a812086325</groupId>
     <artifactId>xfxh-java</artifactId>
     <version>1.0</version>
 </dependency>
 ```
 
-3、添加yml配置
+2、添加yml配置
 ```yml
 xfxh:
   apiHost: spark-api.xf-yun.com
@@ -25,7 +23,7 @@ xfxh:
   apiSecret: xxx
 ```
 
-4、在启动类或配置类注册一个bean
+3、在启动类或配置类注册一个bean
 ```java
 @SpringBootApplication
 public class DevScaffoldApplication {
@@ -50,7 +48,7 @@ public class DevScaffoldApplication {
 }
 ```
 
-5、自定义一个Listener类继承WebSocketListener
+4、自定义一个Listener类继承WebSocketListener
 ```java
 public class XfXhListener extends WebSocketListener {
 
@@ -100,10 +98,13 @@ public class XfXhListener extends WebSocketListener {
 
 ```
 
-6、在需要发送的地方，注入xhStreamClient就可以发送消息啦
+5、在需要发送的地方，注入xhStreamClient就可以发送消息啦
 1. 第一个参数为uid，用户标识
 2. 第二个参数为消息对象，是一个集合，需要上下文回答，需要把历史消息也传入
 3. 第三个参数为刚才自定义的Listener类
 ```java
+@Autowired
+private XhStreamClient xhStreamClient;
+
 xhStreamClient.sendMsg(uid, get(uid),new XfXhListener());
 ```
