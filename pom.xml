@@ -6,7 +6,7 @@
 
     <groupId>io.github.a812086325</groupId>
     <artifactId>xfxh-java</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <name>xfxh-java</name>
     <description>讯飞星火大模型 JAVA SDK</description>
     <url>https://www.hualuo.top</url>

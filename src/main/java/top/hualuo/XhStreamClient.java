@@ -16,6 +16,9 @@ import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * 星火流式请求客户端
+ */
 public class XhStreamClient {
     private String apiHost;
     private String apiPath;
@@ -83,7 +86,10 @@ public class XhStreamClient {
     }
 
 
-
+    /**
+     * 获取验证请求url
+     * @return
+     */
     public String getAuthorizationUrl(){
         try {
             // 获取鉴权时间 date
