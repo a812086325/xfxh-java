@@ -3,7 +3,7 @@
 支持Tokens计算。
 
 # 使用方式
-1、引入该依赖
+## 1、引入该依赖
 
 ```java
 <dependency>
@@ -13,7 +13,7 @@
 </dependency>
 ```
 
-2、添加yml配置
+## 2、添加yml配置
 ```yml
 xfxh:
   apiHost: spark-api.xf-yun.com
@@ -23,7 +23,21 @@ xfxh:
   apiSecret: xxx
 ```
 
-3、在启动类或配置类注册一个bean
+## 3、编写配置类
+```java
+@Configuration
+@ConfigurationProperties(prefix = "xfxh")
+@Data
+public class XfXhConfig {
+    private String apiHost;
+    private String apiPath;
+    private String appId;
+    private String apiKey;
+    private String apiSecret;
+}
+```
+
+## 4、在启动类或配置类注册一个bean
 ```java
 @SpringBootApplication
 public class DevScaffoldApplication {
@@ -48,7 +62,7 @@ public class DevScaffoldApplication {
 }
 ```
 
-4、自定义一个Listener类继承WebSocketListener
+## 5、自定义一个Listener类继承WebSocketListener
 ```java
 public class XfXhListener extends WebSocketListener {
 
@@ -98,7 +112,7 @@ public class XfXhListener extends WebSocketListener {
 
 ```
 
-5、在需要发送的地方，注入xhStreamClient就可以发送消息啦
+## 6、在需要发送的地方，注入xhStreamClient就可以发送消息啦
 1. 第一个参数为uid，用户标识
 2. 第二个参数为消息对象，是一个集合，需要上下文回答，需要把历史消息也传入
 3. 第三个参数为刚才自定义的Listener类
@@ -106,5 +120,7 @@ public class XfXhListener extends WebSocketListener {
 @Autowired
 private XhStreamClient xhStreamClient;
 
-xhStreamClient.sendMsg(uid, get(uid),new XfXhListener());
+MsgDTO dto = MsgDTO.builder().role(MsgDTO.Role.USER.getName()).content("请介绍一下你自己").build();
+
+xhStreamClient.sendMsg("123", Arrays.asList(dto),new XfXhListener());
 ```
